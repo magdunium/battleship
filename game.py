@@ -27,7 +27,6 @@ ship_col = random_col(board)
 
 # The Game code
 def theGame():
-    rows(ship_row, ship_col)
     for turn in range(5):
         gameResult = 0
 
