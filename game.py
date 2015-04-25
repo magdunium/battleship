@@ -26,7 +26,7 @@ def theGame():
     ship_row = random_row(board)
     ship_col = random_col(board)
 
-    for turn in range(5):
+    for turn in range(100):
         guess_row = int(raw_input("Guess Row:")) - 1
         guess_col = int(raw_input("Guess Col:")) - 1
 
