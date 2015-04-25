@@ -2,18 +2,6 @@ __author__ = 'Magdum'
 
 from random import randint
 
-board = []
-
-for x in range(5):
-    board.append(["O"] * 5)
-
-def print_board(board):
-    for row in board:
-        print " ".join(row)
-
-print "Let's play Battleship!\n"
-print_board(board)
-
 def random_row(board):
     return randint(0, len(board) - 1)
 
@@ -21,15 +9,26 @@ def random_col(board):
     return randint(0, len(board[0]) - 1)
 
 
-ship_row = random_row(board)
-ship_col = random_col(board)
-
-
 # The Game code
 def theGame():
-    for turn in range(5):
-        gameResult = 0
+    board = []
 
+    for x in range(5):
+        board.append(["O"] * 5)
+
+    def print_board(board):
+        for row in board:
+            print " ".join(row)
+
+    print "Let's play Battleship!\n"
+    print_board(board)
+
+    ship_row = random_row(board)
+    ship_col = random_col(board)
+
+    print '[CHEAT] Comp row:', ship_row+1, ' col:', ship_col+1
+
+    for turn in range(5):
         guess_row = int(raw_input("Guess Row:")) - 1
         guess_col = int(raw_input("Guess Col:")) - 1
 
@@ -47,21 +46,21 @@ def theGame():
             print_board(board)
 
         print "Turn", turn + 1
-    gameResult += turn
-    print "Your total result is: ", gameResult + 1, ", Congratulations!\n"
+    print "Your total result is: ", turn + 1, ", Congratulations!\n"
+    return turn + 1
 
 def player1(theGame):
     print "\nPlayer-1 turn: "
-    theGame()
+    return theGame()
 
 def player2(theGame):
     print "\nPlayer-2 turn: "
-    theGame()
+    return theGame()
 
 def whoWon(player1result, player2result):
     if player1result > player2result:
         print "Player 2 WON!"
-    elif player1result == player1result:
+    elif player1result == player2result:
         print "It's a TIE!"
     else:
         print "Player 1 WON!"
